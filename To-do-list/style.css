@@ -1,0 +1,16 @@
+.task:hover .actions{
+    visibility: visible !important;
+}
+
+#to-do-list .move-to-do{
+    display: none;
+}
+
+#done-list .move-done{
+    display: none;
+}
+
+.actions a{
+    text-decoration: none;
+    color: black;
+}

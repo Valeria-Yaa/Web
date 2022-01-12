@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To do list</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+        <script src="main.js"></script>
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+      </head>
+<body>
+    <header>
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="#">To Do list</a>
+                    
+                    <div class="collapse navbar-collapse" id="navbarID">
+                        <div class="navbar-nav ml-auto">
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#task-modal">
+                                Создать
+                              </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="alerts">
+                <div class="alert alert-success alert-dismissible fade show d-none" role="alert">
+                    <span class = "msg">
+                    <strong>Новая задача!</strong> Сформирована и добавлена в список задач
+                    </span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="card">
+            <div class="card-header">
+              <h3 class="mb-0">To Do</h3>
+            </div>
+            <div class="card-body p-0">
+                <table class="table">
+                    <tbody id="to-do-list">
+                        <tr class="task d-none" id="task-template">
+                         <th>
+                             <span class="task-name">Название задачи</span>
+                         </th>
+                        <td>
+                            <span class="task-description d-none">Описание задачи</span>
+                        </td>
+                        <td>
+                            <div class="actions invisible text-right">
+                                <a class="move-to-do"  title="Переместить в колонку To Do">
+                                    <i class="fa fa-arrow-left ml-2" style="font-family:fontAwesome;" aria-hidden="true"></i>
+                                </a>
+                            
+                                <a data-toggle="modal" data-target="#task-modal" data-action="show" class ="ml-2" title="Просмотреть">
+                                    <i class = "fa fa-eye ml-2" aria-hidden = "true"></i>
+                                </a>
+
+                                <a data-toggle="modal" data-target="#task-modal" data-action="edit" class ="ml-2" title="Редактировать">
+                                    <i class = "fa fa-edit ml-2" aria-hidden = "true"></i>
+                                </a>
+
+                                <a data-toggle="modal" data-target="#remove-task-modal" data-action="remove" class ="ml-2" title="Удалить">
+                                    <i class="fa fa-trash-o ml-2" aria-hidden="true"></i>
+                                </a>
+
+                                <a class="move-done" title="Переместить в Done">
+                                    <i class="fa fa-arrow-right ml-2" style="font-family:fontAwesome;" aria-hidden="true"></i>
+                                </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+            <div class="card-footer">
+                <p class="todo"><span class="badge bg-primary">0</span> задач </p>
+            </div>
+              </div>
+            </div>
+              <div class="col-md-6">
+                <div class="card">
+          <div class="card-header">
+            <h3 class="mb-0">Done</h3>
+          </div>
+          <div class="card-body p-0">
+              <table class="table">
+                  <tbody id="done-list">
+                      
+                  </tbody>
+                </table>
+          </div>
+          <div class="card-footer">
+            <p class="done"><span class="badge bg-success">0</span> задач</p>
+          </div>
+            </div>
+          </div>
+          
+          </div>
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="task-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Создание новой задачи</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+
+              <div class="modal-body">
+                <form>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="name" class="col-form-label">Название задачи</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input class="form-control" type="name" id="name" name="name">
+                            </div>
+                            <div class="col-md-3">
+                              <label for="desc" class="col-form-label">Описание задачи</label>
+                          </div>
+                          <div class="col-md-9">
+                              <textarea class="form-control" name="desc" id="desc" cols="30" rows="10"></textarea>
+                          </div>
+                          <div class="col-md-3 column">
+                              <label for="column" class="col-form-label">Колонка</label>
+                          </div>
+                          <div class="col-md-9 list">
+                              <select class="form-control" name="column" id="column">
+                                  <option value="to-do">To do</option>
+                                  <option value="done">Done</option>
+                              </select>
+                          </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name = "action">
+                    <input type="hidden" name = "task-id">
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+                <button type="button" class="btn btn-primary action-task-btn" data-dismiss="modal">Создать</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="remove-task-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Удаление задачи</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+  
+  
+                <div class="modal-body">
+                  Вы уверены, что хотите удалить задачу <span class="task-name"></span>?
+                  <form>
+                      <input type="hidden" name="task-id">
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+                  <button type="button" class="btn btn-primary remove-task-btn" data-dismiss="modal">Да</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </main>
+    
+</body>
+</html>
