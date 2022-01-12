@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "utf-8">
+		<title>Cats facts</title>
+		<link rel = "stylesheet" href = "static/style.css">
+        <script src = 'static/main.js'></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <img class = "logo" src="static\images\cat.jpg" alt = "">
+                <div class="title">
+                    Facts about cats
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="container">
+                <div class="pagination-info">
+                    <span>Показывать по </span>
+                    <select name="per-page" id="" class = "per-page-btn">
+                        <option>5</option>
+                        <option selected>10</option>
+                        <option>15</option>
+                        <option>20</option>
+                        <option>25</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select>
+                    <span> записей на странице</span>
+                    <span class="current-interval-info">Показаны записи с </span>
+                    <span class = "current-interval-start"> 1 </span> по
+                    <span class="current-interval-end"> 10 </span> из
+                    <span class="total-count"> 190 </span>
+                </div>
+                <div class="facts-list" data-url = "http://cat-facts-api.std-900.ist.mospolytech.ru/facts">
+                    <div class="fact-list-item">
+                        <div class="item-content">
+                            Cats are the world's most popular pets, outnumbering dogs by as many as three to one
+                        </div>
+                        <div class="item-footer">
+                            <div class="author-name">
+                                Alex
+                            </div>
+                            <div class="upvotes">
+                                4
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination">
+                    
+                </div>
+                
+            </div>
+        </main>
+    </body>
+</html>
